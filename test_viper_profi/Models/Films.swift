@@ -21,9 +21,3 @@ struct Films {
     var isFavorite: Bool
 }
 
-//extension Films: Equatable {
-//    static func == (lhs: Films, rhs: Films) -> Bool {
-//        return lhs.id == rhs.id
-//            && lhs.isFavorite == rhs.isFavorite
-//    }
-//}
