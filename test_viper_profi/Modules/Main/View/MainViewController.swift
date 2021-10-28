@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView()
-        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -53,12 +53,13 @@ extension MainViewController: MainViewInput {
     func setupViews() {
         self.view.addSubview(tableView)
         
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        let guide = self.view.layoutMarginsGuide
+        
         NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor),
+            self.tableView.topAnchor.constraint(equalTo: guide.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
         ])
     }
     
@@ -66,6 +67,7 @@ extension MainViewController: MainViewInput {
         print("\(type(of: self)) - \(#function)")
         
         self.data = data
+        self.tableView.reloadData()
     }
 }
 

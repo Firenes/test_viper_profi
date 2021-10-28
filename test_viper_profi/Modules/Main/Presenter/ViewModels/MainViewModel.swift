@@ -49,7 +49,10 @@ class MainViewModel {
         if let _ = item.image {
             return UIImage()
         }
-        return UIImage(systemName: "film") ?? UIImage()
+        return UIImage()
+//        return UIImage(systemName: "film") ?? UIImage()
+//        return UIImage(imageLiteralResourceName: "film")
+//        return UIImage.init(named: "film") ?? UIImage()
     }
     
     var isFavorite: Bool {

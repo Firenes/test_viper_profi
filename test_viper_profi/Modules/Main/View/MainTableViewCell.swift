@@ -13,7 +13,6 @@ class MainTableViewCell: UITableViewCell, NibLoadable {
     let filmImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .center
         imageView.backgroundColor = .green
         return imageView
     }()
@@ -72,7 +71,7 @@ class MainTableViewCell: UITableViewCell, NibLoadable {
         filmSubtitleLabel.text = vm.subtitle
         filmImageView.image = vm.image
         
-        favoriteButton.setImage(vm.isFavorite ? UIImage.init(systemName: "star.fill") : UIImage.init(systemName: "star"), for: .normal)
+        favoriteButton.setImage(vm.isFavorite ? UIImage.init(named: "star.fill") : UIImage.init(named: "star"), for: .normal)
     }
     
     func setupViews() {
@@ -84,24 +83,19 @@ class MainTableViewCell: UITableViewCell, NibLoadable {
         
         NSLayoutConstraint.activate([
             filmImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            filmImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
-            filmImageView.widthAnchor.constraint(equalToConstant: 24),
-            filmImageView.heightAnchor.constraint(equalToConstant: 24),
+            filmImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Style.Sizes.smallHPadding),
+            filmImageView.widthAnchor.constraint(equalToConstant: Style.Sizes.baseImageSize),
+            filmImageView.heightAnchor.constraint(equalToConstant: Style.Sizes.baseImageSize),
             
             favoriteButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            favoriteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -8),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 24),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 24),
+            favoriteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Style.Sizes.smallHPadding),
+            favoriteButton.widthAnchor.constraint(equalToConstant: Style.Sizes.baseButtonSize),
+            favoriteButton.heightAnchor.constraint(equalToConstant: Style.Sizes.baseButtonSize),
             
-            descStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
-            descStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
-            descStackView.leadingAnchor.constraint(equalTo: self.filmImageView.trailingAnchor, constant: 8),
-            descStackView.trailingAnchor.constraint(equalTo: self.favoriteButton.leadingAnchor, constant: -8)
-            
-//            descStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
-//            descStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
-//            descStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
-//            descStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -8),
+            descStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Style.Sizes.smallVPadding),
+            descStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Style.Sizes.smallVPadding),
+            descStackView.leadingAnchor.constraint(equalTo: self.filmImageView.trailingAnchor, constant: Style.Sizes.smallHPadding),
+            descStackView.trailingAnchor.constraint(equalTo: self.favoriteButton.leadingAnchor, constant: -Style.Sizes.smallHPadding)
         ])
     }
 }
